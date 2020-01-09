@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Andalucia Compromiso Digital</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_surname">Surname</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_nif">NIF</string>
+    <string name="hint_discap">Disability</string>
+    <string name="hint_tfno">Telephone</string>
+    <string name="hint_birth">Birth Date</string>
+    <string name="button_register">Register</string>
+</resources>
