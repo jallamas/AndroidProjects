@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">04_ConstraintLayoutPractica</string>
+    <string name="hotel_name">Langham Place, New York,...</string>
+    <string name="text_price">$399</string>
+    <string name="text_offer">Exclusive Mobile</string>
+    <string name="normal_price">$665</string>
+    <string name="relative_price">nightly price</string>
+    <string name="text_rating">4.7 / 5 Outstanding</string>
+</resources>

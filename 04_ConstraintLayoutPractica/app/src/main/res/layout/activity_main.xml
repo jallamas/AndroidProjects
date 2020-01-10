@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewHotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hotel_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+        android:id="@+id/ratingBarHotel"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:rating="5"
+        app:layout_constraintStart_toStartOf="@+id/textViewHotel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHotel" />
+
+    <TextView
+        android:id="@+id/textViewOfferPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_price"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/ratingBarHotel"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarHotel" />
+
+    <ImageView
+        android:id="@+id/imageViewTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewOfferPrice"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarHotel"
+        app:srcCompat="@drawable/offer_24dp"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textViewOfferText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/text_offer"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewTag"
+        app:layout_constraintTop_toBottomOf="@+id/ratingBarHotel" />
+
+    <TextView
+        android:id="@+id/textViewNormalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/normal_price"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOfferPrice" />
+
+    <TextView
+        android:id="@+id/textViewTextOffer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/relative_price"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewNormalPrice"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTag" />
+
+    <ImageView
+        android:id="@+id/imageViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNormalPrice"
+        app:srcCompat="@drawable/comment_24dp" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_rating"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewDialog"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTextOffer" />
+
+    <ImageView
+        android:id="@+id/imageViewHotel"
+        android:layout_width="178dp"
+        android:layout_height="193dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/textViewMill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="0.5 mill"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewHotel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
