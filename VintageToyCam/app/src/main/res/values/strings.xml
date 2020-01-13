@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VintageToyCam</string>
+    <string name="buttonPrev"><![CDATA[<]]></string>
+    <string name="buttonNext"><![CDATA[>]]></string>
+</resources>
