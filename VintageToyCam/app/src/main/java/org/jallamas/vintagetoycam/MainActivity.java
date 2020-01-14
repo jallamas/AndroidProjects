@@ -47,11 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if (n+1 == imagenes.size()){
-            n=0;
-        }else{
-            n++;
-        }
+        n=(n+1)%imagenes.size();
         Glide
             .with(this)
             .load(imagenes.get(n))

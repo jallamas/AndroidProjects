@@ -55,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (length > 0) {
                 etScreen.setText(etScreen.getText().toString().substring(0,length-1));
             }
-
-
         } else if(etScreen.getText().toString().equals("0")){
             etScreen.setText(b.getText().toString());
         } else {
