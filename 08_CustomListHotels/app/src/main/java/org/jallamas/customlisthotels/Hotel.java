@@ -4,11 +4,11 @@ public class Hotel {
 
     private String nombre;
     private String photoUrl;
-    private double rate;
+    private float rate;
     private int price;
     private int offerPrice;
 
-    public Hotel(String nombre, String photoUrl, double rate, int price, int offerPrice) {
+    public Hotel(String nombre, String photoUrl, float rate, int price, int offerPrice) {
         this.nombre = nombre;
         this.photoUrl = photoUrl;
         this.rate = rate;
@@ -32,11 +32,11 @@ public class Hotel {
         this.photoUrl = photoUrl;
     }
 
-    public double getRate() {
+    public float getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(float rate) {
         this.rate = rate;
     }
 
