@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Glide
                 .with(this)
                 .load(imagenes.get(n))
+                .centerCrop()
                 .into(imageView);
     }
 
