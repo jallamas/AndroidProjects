@@ -1,6 +1,7 @@
 package org.jallamas.luismi_customlist_imageeffects;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -38,21 +41,26 @@ public class EffectsAdapter extends ArrayAdapter<Efecto> {
         ImageView ivImagen = v.findViewById(R.id.imageViewFoto);
         TextView tvEfecto = v.findViewById(R.id.textViewEffect);
 
-
-        // Obtener los datos del alumno actual que debo dibujar
+        // Obtener los datos del efecto actual que debo dibujar
         Efecto efectoActual = listaEfectos.get(position);
         String efecto = efectoActual.getNombreEfecto();
         String urlFoto = efectoActual.getUrlPhoto();
+        Transformation<Bitmap> transformation=efectoActual.getTransformation();
 
         // Insertar en los componentes de la plantilla
-        // los datos del alumno actual
+        // los datos del efecto actual
         tvEfecto.setText(efecto);
 
-        Glide.with(ctx)
-                .load(urlFoto)
-                .centerCrop()
-                .into(ivImagen);
-
+        if(transformation==null){
+            Glide.with(ctx)
+                    .load(urlFoto)
+                    .into(ivImagen);
+        }else {
+            Glide.with(ctx)
+                    .load(urlFoto)
+                    .apply(RequestOptions.bitmapTransform(transformation))
+                    .into(ivImagen);
+        }
         return v;
     }
 }
