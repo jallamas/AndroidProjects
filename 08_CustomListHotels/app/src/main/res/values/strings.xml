@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">08_CustomListHotels</string>
+    <string name="app_name">Hoteles</string>
     <string name="hotel_name">Langham Place, New York,...</string>
     <string name="text_price">$399</string>
     <string name="text_offer">Exclusive Mobile</string>

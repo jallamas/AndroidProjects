@@ -1,6 +1,7 @@
 package org.jallamas.customlisthotels;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,12 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
     List<Hotel> hoteles;
 
     public HotelAdapter(@NonNull Context context, int resource, @NonNull List<Hotel> objects) {
-        super(context, resource);
-        this.ctx=context;
+        super(context, resource, objects);
+        this.ctx = context;
         this.layoutPlantilla = resource;
         this.hoteles = objects;
     }
+
 
     @NonNull
     @Override
@@ -42,7 +44,6 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
         RatingBar ratingBar = v.findViewById(R.id.ratingBarHotel);
         ImageView ivPhoto = v.findViewById(R.id.imageViewHotel);
 
-
         // Obtener los datos del hotel actual que debo dibujar
         Hotel hotelActual = hoteles.get(position);
         String hotel = hotelActual.getNombre();
@@ -51,12 +52,12 @@ public class HotelAdapter extends ArrayAdapter<Hotel> {
         int price = hotelActual.getPrice();
         float rate = hotelActual.getRate();
 
-
         // Insertar en los componentes de la plantilla
         // los datos del hotel actual
         tvNombre.setText(hotel);
-        tvOfferPrice.setText(offerPrice);
-        tvPrice.setText(price);
+        tvOfferPrice.setText(String.valueOf(offerPrice));
+        tvPrice.setText(String.valueOf(price));
+        tvPrice.setPaintFlags(tvPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         tvRate.setText(String.valueOf(rate));
         ratingBar.setRating(rate);
 
