@@ -1,6 +1,7 @@
 package org.jallamas.primerrecyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ class ImagesAdapter extends ArrayAdapter<String> {
         ImageView ivImagen = v.findViewById(R.id.imageViewFoto);
 
         // Obtener los datos de la imagen actual que debo dibujar
-        String fotoActual =imagenes.get(position);
+        final String fotoActual =imagenes.get(position);
 
         // Insertar en los componentes de la plantilla
         // los datos de la imagen actual
@@ -47,6 +48,15 @@ class ImagesAdapter extends ArrayAdapter<String> {
                     .load(fotoActual)
                     .into(ivImagen);
 
+        ivImagen.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent i = new Intent(ctx,Activity2.class);
+                i.putExtra("foto",fotoActual);
+                ctx.startActivity(i);
+
+            }
+        });
         return v;
     }
 }
