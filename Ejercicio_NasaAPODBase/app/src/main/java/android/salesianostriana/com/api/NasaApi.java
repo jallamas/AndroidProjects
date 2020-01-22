@@ -2,13 +2,16 @@ package android.salesianostriana.com.api;
 
 import android.util.Log;
 
+import org.joda.time.LocalTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,7 +39,11 @@ public class NasaApi {
      */
     public NasaApi(String key) {
         this.api_key = key;
-        client = new OkHttpClient();
+        client = new OkHttpClient.Builder()
+                .callTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60,TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS).build();
+
     }
 
     /**

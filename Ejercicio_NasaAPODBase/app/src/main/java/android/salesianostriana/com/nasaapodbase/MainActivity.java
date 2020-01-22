@@ -68,17 +68,17 @@ public class MainActivity extends AppCompatActivity {
             DateTimeFormatter dtfOut = DateTimeFormat.forPattern("dd-MM-yyyy");
             fecha.setText(dtfOut.print(jodatime)+"\n Seleccione otra fecha");
 
-            if (s.getUrl().contains("youtube")){
-                mainFoto.setVisibility(View.GONE);
-                Toast.makeText(myActivity, "Luismi tiene el código secreto", Toast.LENGTH_LONG).show();
-            }else {
+//            if (s.getUrl().contains("youtube")){
+//                mainFoto.setVisibility(View.GONE);
+//                Toast.makeText(myActivity, "Luismi tiene el código secreto", Toast.LENGTH_LONG).show();
+//            }else {
                 Glide
                         .with(MainActivity.this)
                         .load(s.getUrl())
                         .error(R.drawable.ic_error)
                         .centerCrop()
                         .into(mainFoto);
-            }
+//            }
             titulo.setText(s.getTitle());
             description.setText(s.getExplanation());
         }
