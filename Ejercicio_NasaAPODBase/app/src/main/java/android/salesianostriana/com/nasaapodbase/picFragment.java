@@ -27,8 +27,9 @@ public class picFragment extends Fragment {
     private int mColumnCount = 2;
     private INasaPictureListener mListener;
     private MypicRecyclerViewAdapter adapter;
-    private List<NasaPicture> listaImagenes;
-
+    private List<NasaPicture> listaImagenes=new ArrayList<>();
+    private RecyclerView recyclerView;
+    private Context context;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -48,18 +49,16 @@ public class picFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pic_list, container, false);
 
         // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-
-            listaImagenes=new ArrayList<>();
-
-        }
+//        if (view instanceof RecyclerView) {
+//            context = view.getContext();
+//            recyclerView = (RecyclerView) view;
+//            if (mColumnCount <= 1) {
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            } else {
+//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+//            }
+//
+//        }
         return view;
     }
 
@@ -100,16 +99,13 @@ public class picFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String s) {
-
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             adapter = new MypicRecyclerViewAdapter(
                     context,
                     R.layout.fragment_pic,
                     listaImagenes);
 
             recyclerView.setAdapter(adapter);
-
-
-            list.setAdapter(adapter);
         }
     }
 
