@@ -36,14 +36,14 @@ public class MypicRecyclerViewAdapter extends RecyclerView.Adapter<MypicRecycler
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = listaImagenes.get(position);
-        holder.mIdView.setText(listaImagenes.get(position).getDate());
+        holder.tvFecha.setText(listaImagenes.get(position).getDate());
 
         Glide
                 .with(ctx)
                 .load(listaImagenes.get(position).getUrl())
                 .error(R.drawable.ic_error)
                 .centerCrop()
-                .into(holder.mContentView);
+                .into(holder.ivFoto);
 
     }
 
@@ -54,15 +54,15 @@ public class MypicRecyclerViewAdapter extends RecyclerView.Adapter<MypicRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final ImageView mContentView;
+        public final TextView tvFecha;
+        public final ImageView ivFoto;
         public NasaPicture mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = view.findViewById(R.id.textViewDate);
-            mContentView = view.findViewById(R.id.imageViewPic);
+            tvFecha = view.findViewById(R.id.textViewDate);
+            ivFoto = view.findViewById(R.id.imageViewPic);
         }
     }
 }
