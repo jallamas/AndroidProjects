@@ -2,7 +2,10 @@ package android.salesianostriana.com.nasaapodbase;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.salesianostriana.com.api.NasaPicture;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +19,14 @@ import java.util.List;
 
 public class MypicRecyclerViewAdapter extends RecyclerView.Adapter<MypicRecyclerViewAdapter.ViewHolder> {
 
-    private final List<NasaPicture> listaImagenes;
+    private final List<NasaPicture> mValues;
     private Context ctx;
-    private int layout;
+    private final INasaPictureListener mListener;
 
-    public MypicRecyclerViewAdapter(Context ctx, int layout, List<NasaPicture> objects) {
-        this.ctx = ctx;
-        this.layout = layout;
-        listaImagenes = objects;
+    public MypicRecyclerViewAdapter(List<NasaPicture> mValues,Context context, INasaPictureListener listener) {
+        this.mValues = mValues;
+        this.ctx = context;
+        this.mListener = listener;
     }
 
     @Override
@@ -35,21 +38,53 @@ public class MypicRecyclerViewAdapter extends RecyclerView.Adapter<MypicRecycler
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = listaImagenes.get(position);
-        holder.tvFecha.setText(listaImagenes.get(position).getDate());
+        holder.mItem = mValues.get(position);
+        holder.tvFecha.setText(mValues.get(position).getDate());
 
-        Glide
-                .with(ctx)
-                .load(listaImagenes.get(position).getUrl())
-                .error(R.drawable.ic_error)
-                .centerCrop()
-                .into(holder.ivFoto);
+        holder.ivFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(holder.mView.getContext() ,DetallesActivity.class );
 
+                i.putExtra("urlFoto", holder.mItem.getUrl());
+                i.putExtra("fotoDesc", holder.mItem.getExplanation());
+                i.putExtra("foto", holder.mItem.getTitle());
+
+                ctx.startActivity(i);
+            }
+        });
+
+        if (holder.mItem.getUrl().contains("youtube")){
+            Glide
+                    .with(ctx)
+                    .load(mValues.get(position).getUrl())
+                    .error(R.drawable.youtube)
+                    .centerCrop()
+                    .into(holder.ivFoto);
+            holder.ivFoto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(holder.mItem.getUrl()));
+                    try {
+                        ctx.startActivity(webIntent);
+                    } catch (ActivityNotFoundException ex) {
+                    }
+                }
+            });
+        }else {
+            Glide
+                    .with(ctx)
+                    .load(mValues.get(position).getUrl())
+                    .error(R.drawable.spinner)
+                    .centerCrop()
+                    .into(holder.ivFoto);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return listaImagenes.size();
+        return mValues.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

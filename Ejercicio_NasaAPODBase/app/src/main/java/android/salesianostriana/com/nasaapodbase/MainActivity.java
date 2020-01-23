@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements ISeleccionarFecha
 
     ImageView mainFoto;
     TextView fecha,titulo,description,youtube;
-    Button historico;
+    Button btnHistorico;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +36,20 @@ public class MainActivity extends AppCompatActivity implements ISeleccionarFecha
         fecha = findViewById(R.id.textViewFecha);
         titulo = findViewById(R.id.textViewTitulo);
         description = findViewById(R.id.textViewDescription);
-        historico = findViewById(R.id.buttonHistory);
+        btnHistorico = findViewById(R.id.buttonHistory);
         youtube = findViewById(R.id.textViewYoutube);
 
         fecha.setOnClickListener((v)->{ mostrarCalendario(v); });
+
+        btnHistorico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,
+                        HistoricoActivity.class);
+                startActivity(i);
+
+            }
+        });
 
         new NasaPicTask().execute();
 
