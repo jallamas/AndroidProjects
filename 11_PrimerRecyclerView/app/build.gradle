@@ -1,4 +1,4 @@
-+0 apply plugin: 'com.android.application'
++0 apply plugin 'com.android.application'
 
 android {
     compileSdkVersion 29
