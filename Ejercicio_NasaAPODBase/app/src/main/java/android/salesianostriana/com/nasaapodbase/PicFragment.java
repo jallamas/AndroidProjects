@@ -29,10 +29,10 @@ public class PicFragment extends Fragment {
 
     private int mColumnCount = 2;
     private INasaPictureListener mListener;
-    private MypicRecyclerViewAdapter adapter;
-    private List<NasaPicture> listaImagenes=new ArrayList<>();
+    private List<NasaPicture> listaImagenes;
     private RecyclerView recyclerView;
     private Context context;
+    private MypicRecyclerViewAdapter fragmentAdapter;
 
     NasaApi nasaApi = new NasaApi("dJLaK1IQk9N3fnNCam84bO9TZshz7su8k23doMLi");
     int count1 = 0;
@@ -58,7 +58,6 @@ public class PicFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // JodaTimeAndroid.init(context);
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -78,6 +77,8 @@ public class PicFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
+
+            listaImagenes = new ArrayList<NasaPicture>();
             manager = new GridLayoutManager(context, mColumnCount);
             new NasaHistoricoPicsTask().execute();
         }
@@ -116,10 +117,8 @@ public class PicFragment extends Fragment {
         @Override
         protected List<NasaPicture> doInBackground(Void... voids) {
 
-            LocalDate date1 = LocalDate.now();
-            LocalDate date2 = date1.plusDays(-30);
 
-            listaImagenes = fotodelDia.getPicOfDateInterval(date2.toString(),date1.toString());
+            listaImagenes = fotodelDia.getPicOfDateInterval(timeBefore.toString(), day.toString());
             Collections.reverse(listaImagenes);
 
             return listaImagenes;
@@ -128,7 +127,7 @@ public class PicFragment extends Fragment {
         @Override
         protected void onPostExecute(List<NasaPicture> s) {
 
-            MypicRecyclerViewAdapter fragmentAdapter = new MypicRecyclerViewAdapter(s,context,mListener);
+            fragmentAdapter = new MypicRecyclerViewAdapter(s,context,mListener);
             recyclerView.setAdapter(fragmentAdapter);
             recyclerView.setLayoutManager(manager);
 
@@ -157,6 +156,8 @@ public class PicFragment extends Fragment {
                         timeBefore = timeBefore.minusMonths(count2);
                         progressDialog = ProgressDialog.show(context,"", "Cargando más...", true);
                         progressDialog.getWindow().setBackgroundDrawableResource(R.color.colorPrimary);
+
+                        new LoadScroll().execute();
                     }
                 }
             });
@@ -174,6 +175,9 @@ public class PicFragment extends Fragment {
             @Override
             protected void onPostExecute(List<NasaPicture> nasaPictures) {
                 Collections.reverse(nasaPictures);
+                listaImagenes.addAll(nasaPictures);
+                fragmentAdapter.notifyDataSetChanged();
+                progressDialog.dismiss();
             }
         }
     }

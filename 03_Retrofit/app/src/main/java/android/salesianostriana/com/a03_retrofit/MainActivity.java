@@ -45,7 +45,7 @@ public class MainActivity extends ListActivity {
 
         // new LoadDataTask().execute("lmlopezmagana");
 
-        Call<List<Repo>> llamada = service.listRepos("lmlopezmagana");
+        Call<List<Repo>> llamada = service.listRepos("jallamas");
 
         llamada.enqueue(new Callback<List<Repo>>() {
             @Override
@@ -62,7 +62,6 @@ public class MainActivity extends ListActivity {
                 Toast.makeText(MainActivity.this, "Se ha producido un error: "+ t.getLocalizedMessage() ,Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
     public void cargarDatos(List<Repo> list) {
@@ -74,7 +73,6 @@ public class MainActivity extends ListActivity {
                 )
         );
     }
-
 
     private class LoadDataTask extends AsyncTask<String, Void, List<Repo>> {
 
