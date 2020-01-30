@@ -12,23 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.jallamas.alumnosapp.dummy.DummyContent;
-import org.jallamas.alumnosapp.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
+
 public class AlumnosFragment extends Fragment {
 
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private OnListFragmentInteractionListener mListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
