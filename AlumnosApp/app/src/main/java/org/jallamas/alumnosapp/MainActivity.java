@@ -1,5 +1,6 @@
 package org.jallamas.alumnosapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements IAlumnosListener{
 
     @Override
     public void onAlumnoClick(Alumno a) {
+        Intent i = new Intent(MainActivity.this, DetalleAlumnoActivity.class);
 
+        i.putExtra("nombre", a.getNombre());
+        i.putExtra("apellidos", a.getApellidos());
+        i.putExtra("foto", a.getFotoUrl());
+
+        startActivity(i);
     }
 }
