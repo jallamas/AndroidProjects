@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import org.jallamas.alumnosapp.models.Alumno;
+
+public class MainActivity extends AppCompatActivity implements IAlumnosListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,5 +53,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAlumnoClick(Alumno a) {
+
     }
 }
