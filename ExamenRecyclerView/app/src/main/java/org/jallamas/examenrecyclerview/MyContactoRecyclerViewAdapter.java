@@ -39,9 +39,9 @@ public class MyContactoRecyclerViewAdapter extends RecyclerView.Adapter<MyContac
         holder.mItem = mValues.get(position);
         holder.tvNombre.setText(holder.mItem.getNombre());
         holder.tvEstado.setText(holder.mItem.getEstado());
-//        holder.tvFotos.setText(holder.mItem.getNumeroFotosSubidas() + " fotos subidas.");
-//        holder.tvAmigos.setText(holder.mItem.getNumeroAmigos() + " amigos");
-//        holder.tvEdad.setText(holder.mItem.getEdad() + " años");
+        holder.tvFotos.setText(holder.mItem.getNumeroFotosSubidas() + " fotos subidas.");
+        holder.tvAmigos.setText(holder.mItem.getNumeroAmigos() + " amigos");
+        holder.tvEdad.setText(holder.mItem.getEdad() + " años");
 
 
         Glide.with(ctx)

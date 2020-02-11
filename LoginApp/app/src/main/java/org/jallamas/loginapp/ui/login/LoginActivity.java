@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,12 +24,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jallamas.loginapp.R;
+import org.jallamas.loginapp.retrofit.IServicio;
+import org.jallamas.loginapp.retrofit.ServiceGenerator;
 import org.jallamas.loginapp.ui.login.LoginViewModel;
 import org.jallamas.loginapp.ui.login.LoginViewModelFactory;
+
+import java.util.List;
+
+import okhttp3.internal.concurrent.Task;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private IServicio servicio;
+    private EditText usernameEditText;
+    private EditText passwordEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.username);
-        final EditText passwordEditText = findViewById(R.id.password);
+        usernameEditText = findViewById(R.id.username);
+        passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
@@ -55,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginFormState.getPasswordError() != null) {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
+
             }
         });
 
@@ -73,8 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 setResult(Activity.RESULT_OK);
 
-                //Complete and destroy login activity once successful
-                finish();
+                servicio = ServiceGenerator.createService(IServicio.class);
+
+
             }
         });
 
@@ -127,5 +141,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    public class loginTask extends AsyncTask<List<String>,Void,List<String>>{
+
+        @Override
+        protected List<String> doInBackground(List<String>... lists) {
+            Call<List<String>> call = servicio.login(new Task(, "my task title");  )
+            return null;
+        }
     }
 }
