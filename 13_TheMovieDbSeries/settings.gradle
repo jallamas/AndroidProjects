@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name='13_TheMovieDbSeries'
