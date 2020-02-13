@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -41,5 +42,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.3.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
     implementation 'com.google.code.gson:gson:2.8.5'
-
+    //Firebase
+    implementation 'com.google.firebase:firebase-firestore:21.4.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }

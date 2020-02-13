@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "201466551166",
+    "firebase_url": "https://themoviedbapp-71a24.firebaseio.com",
+    "project_id": "themoviedbapp-71a24",
+    "storage_bucket": "themoviedbapp-71a24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201466551166:android:2b4f36960bbe8a6d97f12f",
+        "android_client_info": {
+          "package_name": "com.example.themoviedbseries"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201466551166-sqo53mb5s419br73k9j6ai6md9oae0el.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.themoviedbseries",
+            "certificate_hash": "8cfbf321a9f6bd17d42a5593438479c6b6a7bb4a"
+          }
+        },
+        {
+          "client_id": "201466551166-905nq327pjm08gl6ma4l1mj55v2gi94c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.themoviedbseries",
+            "certificate_hash": "2ca20bc1256f39fffb5275316a42f68c35371484"
+          }
+        },
+        {
+          "client_id": "201466551166-54mdhdf92dr4appta35rlu5inp1dtimh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1tQ5l8IY6kVoIAqfaS1tL5MZYhMkc5qU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201466551166-54mdhdf92dr4appta35rlu5inp1dtimh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
