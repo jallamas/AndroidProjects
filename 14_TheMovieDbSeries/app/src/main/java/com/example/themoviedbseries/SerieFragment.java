@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.themoviedbseries.data.SeriesViewModel;
 import com.example.themoviedbseries.response.ResponseSeriePopular;
 import com.example.themoviedbseries.response.Result;
 import com.example.themoviedbseries.retrofit.SeriesClient;
@@ -31,8 +36,8 @@ public class SerieFragment extends Fragment {
     MySerieRecyclerViewAdapter adapter;
     private int mColumnCount = 2;
     private RecyclerView recyclerView;
-    SeriesService seriesService;
-    SeriesClient seriesClient;
+    private SeriesViewModel seriesViewModel;
+
 
     public SerieFragment() {
     }
@@ -40,6 +45,9 @@ public class SerieFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        seriesViewModel = new ViewModelProvider(getActivity())
+                .get(SeriesViewModel.class);
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -60,41 +68,26 @@ public class SerieFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            retrofitInit();
+            adapter = new MySerieRecyclerViewAdapter(
+                    getActivity(),
+                    resultList
+            );
+            recyclerView.setAdapter(adapter);
+
             loadSeriesData();
         }
         return view;
     }
 
-    private void retrofitInit() {
-        seriesClient = seriesClient.getInstance();
-        seriesService = seriesClient.getSeriesService();
-
-    }
-
     private void loadSeriesData() {
-        Call<ResponseSeriePopular> call = seriesService.getPopularSeries();
-        call.enqueue(new Callback<ResponseSeriePopular>() {
-            @Override
-            public void onResponse(Call<ResponseSeriePopular> call, Response<ResponseSeriePopular> response) {
-                if(response.isSuccessful()){
-                    resultList =response.body().getResults();
-                    adapter = new MySerieRecyclerViewAdapter(
-                            getActivity(),
-                            resultList
-                    );
-                    recyclerView.setAdapter(adapter);
-                }else{
-                    Toast.makeText(getActivity(), "Se produjo un error", Toast.LENGTH_SHORT).show();
+        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Result>>() {
+                    @Override
+                    public void onChanged(List<Result> results) {
+                        resultList = results;
+                        adapter.setData(resultList);
+                    }
                 }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseSeriePopular> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error en la conexión", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+        );
 
     }
 

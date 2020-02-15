@@ -33,21 +33,33 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        if (holder.mItem.getPosterPath().isEmpty()){
-            Glide.with(ctx)
-                    .load(R.drawable.ic_launcher_background)
-                    .into(holder.ivCartel);
-        }else {
-            Glide.with(ctx)
-                    .load(holder.mItem.getPosterPath())
-                    .into(holder.ivCartel);
+
+        if(mValues!=null) {
+            holder.mItem = mValues.get(position);
+            if (holder.mItem.getPosterPath().isEmpty()) {
+                Glide.with(ctx)
+                        .load(R.drawable.ic_launcher_background)
+                        .into(holder.ivCartel);
+            } else {
+                Glide.with(ctx)
+                        .load(holder.mItem.getPosterPath())
+                        .into(holder.ivCartel);
+            }
         }
+    }
+
+    public void setData(List<Result> resultList){
+        this.mValues = resultList;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        if(mValues!=null) {
+            return mValues.size();
+        }else{
+            return 0;
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
