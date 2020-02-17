@@ -34,6 +34,7 @@ public class ServiceGenerator {
         iServicio = retrofit.create(IServicio.class);
     }
 
+
     public static ServiceGenerator getInstance(){
         if(serviceGenerator==null){
             serviceGenerator = new ServiceGenerator();
@@ -44,5 +45,6 @@ public class ServiceGenerator {
     public IServicio getIServicio(){
         return iServicio;
     }
+
 
 }
