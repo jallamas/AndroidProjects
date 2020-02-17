@@ -19,7 +19,4 @@ public interface IServicio {
     @POST("register")
     Call<ResponseRegister> doRegister(@Body ReqRegister reqRegister);
 
-    @GET("tasks/")
-    Call<ResponseTask> getTasks();
-
 }

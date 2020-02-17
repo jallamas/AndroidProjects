@@ -12,4 +12,13 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password2">Repeat password</string>
     <string name="action_newRegister">Registrar nuevo usuario</string>
+    <string name="task_title_tag">Tarea:</string>
+    <string name="task_description_tag">Descripción:</string>
+    <string name="task_user_tag">Creada por:</string>
+    <string name="task_done_user_tag">Realizada por:</string>
+    <string name="title_activity_task_list">TaskListActivity</string>
+    <string name="hint_task_title">Título de la tarea</string>
+    <string name="hint_task_description">Descripción de la tarea</string>
+    <string name="btn_newtask">Nueva tarea</string>
+    <string name="title_newtask">CREAR NUEVA TAREA</string>
 </resources>

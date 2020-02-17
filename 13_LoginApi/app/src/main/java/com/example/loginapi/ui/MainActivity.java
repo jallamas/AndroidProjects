@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginapi.R;
+import com.example.loginapi.TaskListActivity;
+import com.example.loginapi.common.Constantes;
+import com.example.loginapi.common.SharedPreferencesManager;
 import com.example.loginapi.retrofit.ServiceGenerator;
 import com.example.loginapi.retrofit.request.ReqLogin;
 import com.example.loginapi.retrofit.IServicio;
@@ -94,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 public void onResponse(Call<ResponseAuth> call, Response<ResponseAuth> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(MainActivity.this, "Login correcto", Toast.LENGTH_SHORT).show();
+                        SharedPreferencesManager.setStringValue(Constantes.PREF_TOKEN,response.body().getToken());
+                        SharedPreferencesManager.setStringValue(Constantes.PREF_USERNAME,response.body().getUsername());
+                        finish();
+                        Intent i = new Intent(MainActivity.this, TaskListActivity.class);
+                        startActivity(i);
                     }else{
                         Toast.makeText(MainActivity.this, "Se produjo un error. Compruebe sus datos de acceso.", Toast.LENGTH_SHORT).show();
                     }

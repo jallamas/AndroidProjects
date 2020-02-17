@@ -13,7 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.loginapi.R;
+import com.example.loginapi.common.Constantes;
 import com.example.loginapi.common.MyApp;
+import com.example.loginapi.common.SharedPreferencesManager;
 import com.example.loginapi.retrofit.IServicio;
 import com.example.loginapi.retrofit.ServiceGenerator;
 import com.example.loginapi.retrofit.request.ReqLogin;

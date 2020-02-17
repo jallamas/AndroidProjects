@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitleTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_title_tag"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTitleTag"
+        app:layout_constraintStart_toEndOf="@+id/textViewTitleTag"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitleTag" />
+
+    <TextView
+        android:id="@+id/textViewDescrptionTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/task_description_tag"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewDoneUserTag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDoneUserTag" />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDescrptionTag"
+        app:layout_constraintStart_toEndOf="@+id/textViewDescrptionTag"
+        app:layout_constraintTop_toTopOf="@+id/textViewDescrptionTag" />
+
+    <TextView
+        android:id="@+id/textViewUserTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/task_user_tag"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleTag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleTag" />
+
+    <TextView
+        android:id="@+id/textViewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUserTag"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserTag"
+        app:layout_constraintTop_toTopOf="@+id/textViewUserTag" />
+
+    <TextView
+        android:id="@+id/textViewDoneUserTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/task_done_user_tag"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserTag"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserTag" />
+
+    <TextView
+        android:id="@+id/textViewUserDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDoneUserTag"
+        app:layout_constraintStart_toEndOf="@+id/textViewDoneUserTag"
+        app:layout_constraintTop_toTopOf="@+id/textViewDoneUserTag" />
+</androidx.constraintlayout.widget.ConstraintLayout>
