@@ -1,4 +1,4 @@
-package com.example.themoviedbseries;
+package com.example.themoviedbseries.ui.popularSeries;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.themoviedbseries.response.Result;
+import com.example.themoviedbseries.R;
+import com.example.themoviedbseries.response.Serie;
 
 import java.util.List;
 
@@ -17,9 +18,9 @@ import java.util.List;
 public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecyclerViewAdapter.ViewHolder> {
 
     private Context ctx;
-    private List<Result> mValues;
+    private List<Serie> mValues;
 
-    public MySerieRecyclerViewAdapter(Context ctx, List<Result> mValues) {
+    public MySerieRecyclerViewAdapter(Context ctx, List<Serie> mValues) {
         this.ctx = ctx;
         this.mValues = mValues;
     }
@@ -48,7 +49,7 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
         }
     }
 
-    public void setData(List<Result> resultList){
+    public void setData(List<Serie> resultList){
         this.mValues = resultList;
         notifyDataSetChanged();
     }
@@ -65,7 +66,7 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final ImageView ivCartel;
-        public Result mItem;
+        public Serie mItem;
 
         public ViewHolder(View view) {
             super(view);

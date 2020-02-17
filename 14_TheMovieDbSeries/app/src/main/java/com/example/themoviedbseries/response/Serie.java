@@ -7,7 +7,7 @@ import com.example.themoviedbseries.common.Constantes;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+public class Serie {
 
     @SerializedName("original_name")
     @Expose
@@ -53,7 +53,7 @@ public class Result {
      * No args constructor for use in serialization
      * 
      */
-    public Result() {
+    public Serie() {
     }
 
     /**
@@ -72,7 +72,7 @@ public class Result {
      * @param id
      * @param posterPath
      */
-    public Result(String originalName, List<Integer> genreIds, String name, Double popularity, List<String> originCountry, Integer voteCount, String firstAirDate, String backdropPath, String originalLanguage, Integer id, Double voteAverage, String overview, String posterPath) {
+    public Serie(String originalName, List<Integer> genreIds, String name, Double popularity, List<String> originCountry, Integer voteCount, String firstAirDate, String backdropPath, String originalLanguage, Integer id, Double voteAverage, String overview, String posterPath) {
         super();
         this.originalName = originalName;
         this.genreIds = genreIds;

@@ -1,13 +1,11 @@
-package com.example.themoviedbseries;
+package com.example.themoviedbseries.ui.popularSeries;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,24 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.themoviedbseries.data.SeriesViewModel;
-import com.example.themoviedbseries.response.ResponseSeriePopular;
-import com.example.themoviedbseries.response.Result;
-import com.example.themoviedbseries.retrofit.SeriesClient;
-import com.example.themoviedbseries.retrofit.SeriesService;
+import com.example.themoviedbseries.R;
+import com.example.themoviedbseries.response.Serie;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SerieFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    List<Result> resultList;
+    List<Serie> serieList;
     MySerieRecyclerViewAdapter adapter;
     private int mColumnCount = 2;
     private RecyclerView recyclerView;
@@ -70,7 +60,7 @@ public class SerieFragment extends Fragment {
             }
             adapter = new MySerieRecyclerViewAdapter(
                     getActivity(),
-                    resultList
+                    serieList
             );
             recyclerView.setAdapter(adapter);
 
@@ -80,11 +70,11 @@ public class SerieFragment extends Fragment {
     }
 
     private void loadSeriesData() {
-        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Result>>() {
+        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
                     @Override
-                    public void onChanged(List<Result> results) {
-                        resultList = results;
-                        adapter.setData(resultList);
+                    public void onChanged(List<Serie> results) {
+                        serieList = results;
+                        adapter.setData(serieList);
                     }
                 }
         );

@@ -1,6 +1,7 @@
 package com.example.loginapi.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -94,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(RegisterActivity.this, "El usuario se registró correctamente", Toast.LENGTH_SHORT).show();
+                        finish();
                     }else{
                         Toast.makeText(RegisterActivity.this, "Se produjo un error. Compruebe sus datos de registro.", Toast.LENGTH_SHORT).show();
                     }

@@ -18,7 +18,7 @@ public class ResponseSeriePopular {
     private Integer totalPages;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<Serie> results = null;
 
     /**
      * No args constructor for use in serialization
@@ -34,7 +34,7 @@ public class ResponseSeriePopular {
      * @param page
      * @param results
      */
-    public ResponseSeriePopular(Integer page, Integer totalResults, Integer totalPages, List<Result> results) {
+    public ResponseSeriePopular(Integer page, Integer totalResults, Integer totalPages, List<Serie> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;
@@ -66,11 +66,11 @@ public class ResponseSeriePopular {
         this.totalPages = totalPages;
     }
 
-    public List<Result> getResults() {
+    public List<Serie> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<Serie> results) {
         this.results = results;
     }
 

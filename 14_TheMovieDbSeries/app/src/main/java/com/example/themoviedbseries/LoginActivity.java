@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -46,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         signInButton = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -97,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login Correcto",Toast.LENGTH_SHORT).show();
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
-                    Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                    Intent i = new Intent(LoginActivity.this,MenuActivity.class);
                     startActivity(i);
                 }else{
                     Toast.makeText(LoginActivity.this, "Login Incorrecto",Toast.LENGTH_SHORT).show();
