@@ -11,14 +11,18 @@ public class ResponseAuth {
     @SerializedName("token")
     @Expose
     private String token;
+    @SerializedName("userId")
+    @Expose
+    private String userId;
 
     public ResponseAuth() {
     }
 
-    public ResponseAuth(String username, String token) {
+    public ResponseAuth(String username, String token, String userId) {
         super();
         this.username = username;
         this.token = token;
+        this.userId = userId;
     }
 
     public String getUsername() {
@@ -35,6 +39,14 @@ public class ResponseAuth {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 }

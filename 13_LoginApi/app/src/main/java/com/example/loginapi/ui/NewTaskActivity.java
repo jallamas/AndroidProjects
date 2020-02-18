@@ -10,9 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginapi.MyTaskRecyclerViewAdapter;
 import com.example.loginapi.R;
 import com.example.loginapi.TaskListActivity;
+import com.example.loginapi.TaskListFragment;
 import com.example.loginapi.common.Constantes;
+import com.example.loginapi.common.SharedPreferencesManager;
 import com.example.loginapi.retrofit.AuthServiceGenerator;
 import com.example.loginapi.retrofit.AuthServicio;
 import com.example.loginapi.retrofit.IServicio;
@@ -31,6 +34,7 @@ public class NewTaskActivity extends AppCompatActivity implements View.OnClickLi
     private AuthServiceGenerator serviceGenerator;
     private EditText tvTask, tvDescription;
     private Button btnNewTask;
+    private ReqNewTask reqNewTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +70,14 @@ public class NewTaskActivity extends AppCompatActivity implements View.OnClickLi
     private void goToNewTask() {
         String title = String.valueOf(tvTask.getText());
         String body = String.valueOf(tvDescription.getText());
+        Integer createdby = SharedPreferencesManager.getIntegerValue(Constantes.PREF_ID);
 
         if(title.isEmpty()){
             tvTask.setError("El nombre de la tarea no puede estar vacío");
         }else if(body.isEmpty()){
             tvDescription.setError("Ha de introducir una descripción");
         }else{
-            ReqNewTask reqNewTask = new ReqNewTask(title,body,null,null);
+            reqNewTask = new ReqNewTask(title,body,createdby,1);
 
             Call<ResponseTask> call = servicio.newTask(reqNewTask);
             call.enqueue(new Callback<ResponseTask>() {

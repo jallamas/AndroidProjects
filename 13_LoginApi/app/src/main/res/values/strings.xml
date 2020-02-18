@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginApi</string>
+    <string name="app_name">Gestión de Tareas</string>
     <string name="prompt_username">username</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Login</string>

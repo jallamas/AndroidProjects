@@ -27,7 +27,7 @@ public class ReqNewTask {
     }
 
     /**
-     * 
+     *
      * @param createdBy
      * @param title
      * @param body

@@ -8,24 +8,16 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textViewTitleTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/task_title_tag"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTitleTag"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitleTag"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitleTag" />
+        android:textAllCaps="true"
+        android:textColor="@color/design_default_color_on_secondary"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textViewDescrptionTag"
@@ -42,31 +34,31 @@
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintBottom_toBottomOf="@+id/textViewDescrptionTag"
-        app:layout_constraintStart_toEndOf="@+id/textViewDescrptionTag"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserDone"
         app:layout_constraintTop_toTopOf="@+id/textViewDescrptionTag" />
 
     <TextView
         android:id="@+id/textViewUserTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="@string/task_user_tag"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitleTag"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitleTag" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textViewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUserTag"
-        app:layout_constraintStart_toEndOf="@+id/textViewUserTag"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserDone"
         app:layout_constraintTop_toTopOf="@+id/textViewUserTag" />
 
     <TextView
@@ -86,7 +78,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="TextView"
+        android:textColor="@color/design_default_color_on_secondary"
         app:layout_constraintBottom_toBottomOf="@+id/textViewDoneUserTag"
         app:layout_constraintStart_toEndOf="@+id/textViewDoneUserTag"
         app:layout_constraintTop_toTopOf="@+id/textViewDoneUserTag" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_task" />
 </androidx.constraintlayout.widget.ConstraintLayout>

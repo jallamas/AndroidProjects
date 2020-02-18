@@ -8,5 +8,6 @@ public class Constantes {
 
     public static String PREF_TOKEN = "PREF_TOKEN";
     public static String PREF_USERNAME = "PREF_USERNAME";
+    public static String PREF_ID = "PREF_ID";
 
 }

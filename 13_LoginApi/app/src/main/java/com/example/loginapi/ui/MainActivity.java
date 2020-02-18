@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "Login correcto", Toast.LENGTH_SHORT).show();
                         SharedPreferencesManager.setStringValue(Constantes.PREF_TOKEN,response.body().getToken());
                         SharedPreferencesManager.setStringValue(Constantes.PREF_USERNAME,response.body().getUsername());
+                        SharedPreferencesManager.setIntegerValue(Constantes.PREF_ID,Integer.parseInt(response.body().getUserId()));
                         finish();
                         Intent i = new Intent(MainActivity.this, TaskListActivity.class);
                         startActivity(i);
