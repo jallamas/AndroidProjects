@@ -19,4 +19,7 @@ public interface IServicio {
     @POST("register")
     Call<ResponseRegister> doRegister(@Body ReqRegister reqRegister);
 
+    @GET("avatar/:img")
+    Call<ResponseTask> uploadImage();
+
 }
