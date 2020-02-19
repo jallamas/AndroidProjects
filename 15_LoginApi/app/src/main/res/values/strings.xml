@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Gestión de Tareas</string>
+    <string name="prompt_username">username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_register">Registro</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password2">Repeat password</string>
+    <string name="action_newRegister">Registrar nuevo usuario</string>
+    <string name="task_title_tag">Tarea:</string>
+    <string name="task_description_tag">Descripción:</string>
+    <string name="task_user_tag">Creada por:</string>
+    <string name="task_done_user_tag">Realizada por:</string>
+    <string name="title_activity_task_list">TaskListActivity</string>
+    <string name="hint_task_title">Título de la tarea</string>
+    <string name="hint_task_description">Descripción de la tarea</string>
+    <string name="btn_newtask">Nueva tarea</string>
+    <string name="title_newtask">CREAR NUEVA TAREA</string>
+    <string name="btn_upload_profile_image">Subir avatar...</string>
+</resources>
