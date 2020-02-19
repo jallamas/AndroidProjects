@@ -144,15 +144,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     }
                     RequestBody requestFile =
                             RequestBody.create(
-                                    MediaType.parse(getContentResolver().getType(uriSelected)), baos.toByteArray());
+                                    baos.toByteArray(),MediaType.parse(getContentResolver().getType(uriSelected)));
 
                     MultipartBody.Part body =
                             MultipartBody.Part.createFormData("avatar", "avatar", requestFile);
 
-                    RequestBody email = RequestBody.create(MultipartBody.FORM, etEmail.getText().toString());
-                    RequestBody username = RequestBody.create(MultipartBody.FORM, etUsername.getText().toString());
-                    RequestBody password = RequestBody.create(MultipartBody.FORM, etPassword.getText().toString());
-                    RequestBody password2 = RequestBody.create(MultipartBody.FORM,etPassword2.getText().toString());
+                    RequestBody email = RequestBody.create(etEmail.getText().toString(),MultipartBody.FORM);
+                    RequestBody username = RequestBody.create(etUsername.getText().toString(),MultipartBody.FORM);
+                    RequestBody password = RequestBody.create(etPassword.getText().toString(),MultipartBody.FORM);
+                    RequestBody password2 = RequestBody.create(etPassword2.getText().toString(),MultipartBody.FORM);
 //                ReqRegister reqRegister = new ReqRegister(email,username,password,password2);
 
                 Call<ResponseRegister> call = servicio.doRegister(body, email, username, password, password2);
