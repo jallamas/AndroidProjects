@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.bumptech.glide.Glide;
 import com.example.themoviedbseries.common.Constantes;
 import com.example.themoviedbseries.common.MyApp;
-import com.example.themoviedbseries.response.ResponseSerie;
+import com.example.themoviedbseries.response.SerieDetails;
 import com.example.themoviedbseries.viewModel.DetalleSerieViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -52,17 +52,17 @@ public class DetalleSerieActivity extends AppCompatActivity {
 
         detalleSerieViewModel = new ViewModelProvider(this).get(DetalleSerieViewModel.class);
 
-        detalleSerieViewModel.getSerie(idSerie).observe(this, new Observer<ResponseSerie>() {
+        detalleSerieViewModel.getSerie(idSerie).observe(this, new Observer<SerieDetails>() {
             @Override
-            public void onChanged(ResponseSerie responseSerie) {
+            public void onChanged(SerieDetails serieDetails) {
                 ivPoster = findViewById(R.id.imageViewPoster);
                 tvName = findViewById(R.id.textViewSerieName);
                 tvOverview = findViewById(R.id.textViewOverview);
 
-                tvName.setText(responseSerie.getOriginalName());
-                tvOverview.setText(responseSerie.getOverview());
+                tvName.setText(serieDetails.getOriginalName());
+                tvOverview.setText(serieDetails.getOverview());
                 Glide.with(MyApp.getContext())
-                        .load(responseSerie.getPosterPath())
+                        .load(serieDetails.getPosterPath())
                         .into(ivPoster);
             }
         });

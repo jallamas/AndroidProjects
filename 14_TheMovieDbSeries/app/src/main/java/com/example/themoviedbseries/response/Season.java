@@ -23,7 +23,7 @@ public class Season {
     private String overview;
     @SerializedName("poster_path")
     @Expose
-    private String posterPath;
+    private Object posterPath;
     @SerializedName("season_number")
     @Expose
     private Integer seasonNumber;
@@ -45,7 +45,7 @@ public class Season {
      * @param seasonNumber
      * @param posterPath
      */
-    public Season(String airDate, Integer episodeCount, Integer id, String name, String overview, String posterPath, Integer seasonNumber) {
+    public Season(String airDate, Integer episodeCount, Integer id, String name, String overview, Object posterPath, Integer seasonNumber) {
         super();
         this.airDate = airDate;
         this.episodeCount = episodeCount;
@@ -96,11 +96,11 @@ public class Season {
         this.overview = overview;
     }
 
-    public String getPosterPath() {
+    public Object getPosterPath() {
         return posterPath;
     }
 
-    public void setPosterPath(String posterPath) {
+    public void setPosterPath(Object posterPath) {
         this.posterPath = posterPath;
     }
 

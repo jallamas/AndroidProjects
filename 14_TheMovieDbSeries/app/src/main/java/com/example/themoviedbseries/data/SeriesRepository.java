@@ -5,9 +5,9 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.themoviedbseries.common.MyApp;
-import com.example.themoviedbseries.response.ResponseSerie;
-import com.example.themoviedbseries.response.ResponseSeriePopular;
 import com.example.themoviedbseries.response.Serie;
+import com.example.themoviedbseries.response.SerieDetails;
+import com.example.themoviedbseries.response.SeriesPopulares;
 import com.example.themoviedbseries.retrofit.SeriesClient;
 import com.example.themoviedbseries.retrofit.SeriesService;
 
@@ -21,7 +21,7 @@ public class SeriesRepository {
     SeriesService seriesService;
     SeriesClient seriesClient;
     MutableLiveData<List<Serie>> popularSeries;
-    MutableLiveData<ResponseSerie> serie;
+    MutableLiveData<SerieDetails> serie;
 
     public SeriesRepository(){
         seriesClient = seriesClient.getInstance();
@@ -34,13 +34,13 @@ public class SeriesRepository {
         serie = getSerie(id);
     }
 
-    public MutableLiveData<ResponseSerie> getSerie(int id) {
-        final MutableLiveData<ResponseSerie> data = new MutableLiveData<>();
+    public MutableLiveData<SerieDetails> getSerie(int id) {
+        final MutableLiveData<SerieDetails> data = new MutableLiveData<>();
 
-        Call<ResponseSerie> call = seriesService.getSerie(id);
-        call.enqueue(new Callback<ResponseSerie>() {
+        Call<SerieDetails> call = seriesService.getSerie(id);
+        call.enqueue(new Callback<SerieDetails>() {
             @Override
-            public void onResponse(Call<ResponseSerie> call, Response<ResponseSerie> response) {
+            public void onResponse(Call<SerieDetails> call, Response<SerieDetails> response) {
                 if(response.isSuccessful()){
                     data.setValue(response.body());
 
@@ -50,7 +50,7 @@ public class SeriesRepository {
             }
 
             @Override
-            public void onFailure(Call<ResponseSerie> call, Throwable t) {
+            public void onFailure(Call<SerieDetails> call, Throwable t) {
                 Toast.makeText(MyApp.getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
 
             }
@@ -61,10 +61,10 @@ public class SeriesRepository {
     public MutableLiveData<List<Serie>> getPopularSeries(){
         final MutableLiveData<List<Serie>> data = new MutableLiveData<>();
 
-        Call<ResponseSeriePopular> call = seriesService.getPopularSeries();
-        call.enqueue(new Callback<ResponseSeriePopular>() {
+        Call<SeriesPopulares> call = seriesService.getPopularSeries();
+        call.enqueue(new Callback<SeriesPopulares>() {
             @Override
-            public void onResponse(Call<ResponseSeriePopular> call, Response<ResponseSeriePopular> response) {
+            public void onResponse(Call<SeriesPopulares> call, Response<SeriesPopulares> response) {
                 if(response.isSuccessful()){
                     data.setValue(response.body().getResults());
 
@@ -74,7 +74,7 @@ public class SeriesRepository {
             }
 
             @Override
-            public void onFailure(Call<ResponseSeriePopular> call, Throwable t) {
+            public void onFailure(Call<SeriesPopulares> call, Throwable t) {
                 Toast.makeText(MyApp.getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
 
             }

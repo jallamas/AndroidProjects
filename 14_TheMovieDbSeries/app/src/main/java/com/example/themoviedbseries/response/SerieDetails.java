@@ -1,3 +1,4 @@
+
 package com.example.themoviedbseries.response;
 
 import java.util.List;
@@ -6,11 +7,11 @@ import com.example.themoviedbseries.common.Constantes;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseSerie {
+public class SerieDetails {
 
     @SerializedName("backdrop_path")
     @Expose
-    private String backdropPath;
+    private Object backdropPath;
     @SerializedName("created_by")
     @Expose
     private List<CreatedBy> createdBy = null;
@@ -49,7 +50,7 @@ public class ResponseSerie {
     private Object nextEpisodeToAir;
     @SerializedName("networks")
     @Expose
-    private List<Object> networks = null;
+    private List<Network> networks = null;
     @SerializedName("number_of_episodes")
     @Expose
     private Integer numberOfEpisodes;
@@ -73,7 +74,7 @@ public class ResponseSerie {
     private Double popularity;
     @SerializedName("poster_path")
     @Expose
-    private String posterPath;
+    private Object posterPath;
     @SerializedName("production_companies")
     @Expose
     private List<Object> productionCompanies = null;
@@ -88,7 +89,7 @@ public class ResponseSerie {
     private String type;
     @SerializedName("vote_average")
     @Expose
-    private Double voteAverage;
+    private Integer voteAverage;
     @SerializedName("vote_count")
     @Expose
     private Integer voteCount;
@@ -97,7 +98,7 @@ public class ResponseSerie {
      * No args constructor for use in serialization
      * 
      */
-    public ResponseSerie() {
+    public SerieDetails() {
     }
 
     /**
@@ -131,7 +132,7 @@ public class ResponseSerie {
      * @param homepage
      * @param status
      */
-    public ResponseSerie(String backdropPath, List<CreatedBy> createdBy, List<Integer> episodeRunTime, String firstAirDate, List<Genre> genres, String homepage, Integer id, Boolean inProduction, List<String> languages, String lastAirDate, LastEpisodeToAir lastEpisodeToAir, String name, Object nextEpisodeToAir, List<Object> networks, Integer numberOfEpisodes, Integer numberOfSeasons, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, String posterPath, List<Object> productionCompanies, List<Season> seasons, String status, String type, Double voteAverage, Integer voteCount) {
+    public SerieDetails(Object backdropPath, List<CreatedBy> createdBy, List<Integer> episodeRunTime, String firstAirDate, List<Genre> genres, String homepage, Integer id, Boolean inProduction, List<String> languages, String lastAirDate, LastEpisodeToAir lastEpisodeToAir, String name, Object nextEpisodeToAir, List<Network> networks, Integer numberOfEpisodes, Integer numberOfSeasons, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, Object posterPath, List<Object> productionCompanies, List<Season> seasons, String status, String type, Integer voteAverage, Integer voteCount) {
         super();
         this.backdropPath = backdropPath;
         this.createdBy = createdBy;
@@ -163,11 +164,11 @@ public class ResponseSerie {
         this.voteCount = voteCount;
     }
 
-    public String getBackdropPath() {
-        return backdropPath;
+    public Object getBackdropPath() {
+        return Constantes.URL_IMAGES + backdropPath;
     }
 
-    public void setBackdropPath(String backdropPath) {
+    public void setBackdropPath(Object backdropPath) {
         this.backdropPath = backdropPath;
     }
 
@@ -267,11 +268,11 @@ public class ResponseSerie {
         this.nextEpisodeToAir = nextEpisodeToAir;
     }
 
-    public List<Object> getNetworks() {
+    public List<Network> getNetworks() {
         return networks;
     }
 
-    public void setNetworks(List<Object> networks) {
+    public void setNetworks(List<Network> networks) {
         this.networks = networks;
     }
 
@@ -331,11 +332,11 @@ public class ResponseSerie {
         this.popularity = popularity;
     }
 
-    public String getPosterPath() {
+    public Object getPosterPath() {
         return Constantes.URL_IMAGES + posterPath;
     }
 
-    public void setPosterPath(String posterPath) {
+    public void setPosterPath(Object posterPath) {
         this.posterPath = posterPath;
     }
 
@@ -371,11 +372,11 @@ public class ResponseSerie {
         this.type = type;
     }
 
-    public Double getVoteAverage() {
+    public Integer getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(Integer voteAverage) {
         this.voteAverage = voteAverage;
     }
 

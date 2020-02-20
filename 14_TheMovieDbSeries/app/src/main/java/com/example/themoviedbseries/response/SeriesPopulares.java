@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseSeriePopular {
+public class SeriesPopulares {
 
     @SerializedName("page")
     @Expose
@@ -22,19 +22,19 @@ public class ResponseSeriePopular {
 
     /**
      * No args constructor for use in serialization
-     *
+     * 
      */
-    public ResponseSeriePopular() {
+    public SeriesPopulares() {
     }
 
     /**
-     *
+     * 
      * @param totalResults
      * @param totalPages
      * @param page
      * @param results
      */
-    public ResponseSeriePopular(Integer page, Integer totalResults, Integer totalPages, List<Serie> results) {
+    public SeriesPopulares(Integer page, Integer totalResults, Integer totalPages, List<Serie> results) {
         super();
         this.page = page;
         this.totalResults = totalResults;

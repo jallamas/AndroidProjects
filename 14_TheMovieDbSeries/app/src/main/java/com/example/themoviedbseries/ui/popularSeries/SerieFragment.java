@@ -87,27 +87,27 @@ public class SerieFragment extends Fragment {
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
-
-        //TODO IMPORTANTE
-        seriesViewModel.getSeriesPopulares().removeObserver(observer);
-
-        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
-            @Override
-            public void onChanged(List<Serie> series) {
-                adapter.setData(series);
-                recyclerView.setAdapter(adapter);
-            }
-        });
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
+//
+//        //TODO IMPORTANTE
+//        seriesViewModel.getSeriesPopulares().removeObserver(observer);
+//
+//        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
+//            @Override
+//            public void onChanged(List<Serie> series) {
+//                adapter.setData(series);
+//                recyclerView.setAdapter(adapter);
+//            }
+//        });
+//
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
+//    }
 }

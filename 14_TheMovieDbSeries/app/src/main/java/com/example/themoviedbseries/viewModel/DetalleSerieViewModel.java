@@ -7,11 +7,11 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.themoviedbseries.data.SeriesRepository;
-import com.example.themoviedbseries.response.ResponseSerie;
+import com.example.themoviedbseries.response.SerieDetails;
 
 public class DetalleSerieViewModel extends AndroidViewModel {
 
-    MutableLiveData<ResponseSerie> serie;
+    MutableLiveData<SerieDetails> serie;
     SeriesRepository seriesRepository;
 
     public DetalleSerieViewModel(@NonNull Application application) {
@@ -19,7 +19,7 @@ public class DetalleSerieViewModel extends AndroidViewModel {
         seriesRepository = new SeriesRepository();
     }
 
-    public MutableLiveData<ResponseSerie> getSerie(int idSerie) {
+    public MutableLiveData<SerieDetails> getSerie(int idSerie) {
         serie = seriesRepository.getSerie(idSerie);
         return serie;
     }
