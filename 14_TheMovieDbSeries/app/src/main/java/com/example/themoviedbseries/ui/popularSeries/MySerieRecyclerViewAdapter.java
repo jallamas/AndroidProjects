@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecyclerViewAdapter.ViewHolder> {
 
-    private Context ctx;
+    Context ctx;
     private List<Serie> mValues;
     SeriesViewModel seriesViewModel;
 
@@ -61,9 +61,9 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
                     if (null != seriesViewModel) {
                         seriesViewModel.setIdSerieSeleccionada(holder.mItem.getId());
                         Toast.makeText(MyApp.getContext(), holder.mItem.getId().toString(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ctx, DetalleSerieActivity.class);
-                        intent.putExtra(Constantes.EXTRA_ID_SERIE, holder.mItem.getId());
-                        ctx.startActivity(intent);
+//                        Intent intent = new Intent(ctx, DetalleSerieActivity.class);
+//                        intent.putExtra(Constantes.EXTRA_ID_SERIE, holder.mItem.getId());
+//                        ctx.startActivity(intent);
                     }
                 }
             });
@@ -71,7 +71,7 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
     }
 
     public void setData(List<Serie> resultList){
-
+        this.mValues.clear();
         this.mValues = resultList;
         notifyDataSetChanged();
     }

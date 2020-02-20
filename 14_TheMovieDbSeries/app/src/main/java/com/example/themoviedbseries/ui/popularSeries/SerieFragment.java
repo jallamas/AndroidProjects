@@ -27,7 +27,7 @@ public class SerieFragment extends Fragment {
 //    List<Serie> serieList;
     MySerieRecyclerViewAdapter adapter;
     private int mColumnCount = 2;
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     private SeriesViewModel seriesViewModel;
     Observer<List<Serie>> observer;
 
@@ -46,11 +46,10 @@ public class SerieFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        seriesViewModel = new ViewModelProvider(getActivity()).get(SeriesViewModel.class);
-
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+        seriesViewModel = new ViewModelProvider(getActivity()).get(SeriesViewModel.class);
     }
 
     @Override
@@ -87,27 +86,27 @@ public class SerieFragment extends Fragment {
     }
 
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
-//
-//        //TODO IMPORTANTE
-//        seriesViewModel.getSeriesPopulares().removeObserver(observer);
-//
-//        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
-//            @Override
-//            public void onChanged(List<Serie> series) {
-//                adapter.setData(series);
-//                recyclerView.setAdapter(adapter);
-//            }
-//        });
-//
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
+
+        //TODO IMPORTANTE
+        seriesViewModel.getSeriesPopulares().removeObserver(observer);
+
+        seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
+            @Override
+            public void onChanged(List<Serie> series) {
+                //adapter.setData(series);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
+    }
 }

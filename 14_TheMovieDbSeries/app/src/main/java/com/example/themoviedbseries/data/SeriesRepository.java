@@ -28,11 +28,11 @@ public class SeriesRepository {
         seriesService = seriesClient.getSeriesService();
         popularSeries = getPopularSeries();
     }
-    public SeriesRepository(int id){
-        seriesClient = seriesClient.getInstance();
-        seriesService = seriesClient.getSeriesService();
-        serie = getSerie(id);
-    }
+//    public SeriesRepository(int id){
+//        seriesClient = seriesClient.getInstance();
+//        seriesService = seriesClient.getSeriesService();
+//        serie = getSerie(id);
+//    }
 
     public MutableLiveData<SerieDetails> getSerie(int id) {
         final MutableLiveData<SerieDetails> data = new MutableLiveData<>();

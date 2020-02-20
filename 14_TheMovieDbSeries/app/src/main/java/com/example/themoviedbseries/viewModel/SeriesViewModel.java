@@ -14,8 +14,8 @@ import com.example.themoviedbseries.response.Serie;
 import java.util.List;
 
 public class SeriesViewModel extends AndroidViewModel {
-    private SeriesRepository seriesRepository;
-    private MutableLiveData<List<Serie>> listaSeries;
+    SeriesRepository seriesRepository;
+    MutableLiveData<List<Serie>> listaSeries;
     MutableLiveData<Integer> idSerieSeleccionada;
 
 
