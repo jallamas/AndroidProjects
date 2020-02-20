@@ -70,14 +70,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
         android:layout_marginBottom="64dp"
         android:text="@string/action_register"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password2_register"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintEnd_toEndOf="@+id/password2_register"
+        app:layout_constraintStart_toStartOf="@+id/password2_register"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatar" />
+
+    <Button
+        android:id="@+id/buttonAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/btn_upload_profile_image"
+        app:layout_constraintStart_toStartOf="@+id/password2_register"
+        app:layout_constraintTop_toBottomOf="@+id/password2_register" />
+
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAvatar"
+        app:layout_constraintStart_toEndOf="@+id/buttonAvatar"
+        app:layout_constraintTop_toTopOf="@+id/buttonAvatar"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

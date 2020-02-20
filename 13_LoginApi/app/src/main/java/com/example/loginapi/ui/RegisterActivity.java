@@ -2,11 +2,13 @@ package com.example.loginapi.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +31,13 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final int READ_REQUEST_CODE = 42;
     private IServicio servicio;
     private ServiceGenerator serviceGenerator;
     private EditText etEmail, etUsername, etPassword, etPassword2;
-    private Button registerButton;
+    private Button registerButton, avatarButton;
+    private ImageView ivAvatar;
+    Uri uriSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         etPassword = findViewById(R.id.password_register);
         etPassword2 = findViewById(R.id.password2_register);
         registerButton = findViewById(R.id.register);
+        avatarButton = findViewById(R.id.buttonAvatar);
+        ivAvatar = findViewById(R.id.imageViewAvatar);
     }
 
     private void events() {

@@ -1,7 +1,8 @@
-
 package com.example.themoviedbseries.response;
 
 import java.util.List;
+
+import com.example.themoviedbseries.common.Constantes;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -331,7 +332,7 @@ public class ResponseSerie {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return Constantes.URL_IMAGES + posterPath;
     }
 
     public void setPosterPath(String posterPath) {

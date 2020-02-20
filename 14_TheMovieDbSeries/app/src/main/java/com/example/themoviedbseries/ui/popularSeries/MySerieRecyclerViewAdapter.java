@@ -3,14 +3,20 @@ package com.example.themoviedbseries.ui.popularSeries;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.themoviedbseries.DetalleSerieActivity;
 import com.example.themoviedbseries.R;
+import com.example.themoviedbseries.common.Constantes;
+import com.example.themoviedbseries.common.MyApp;
 import com.example.themoviedbseries.response.Serie;
+import com.example.themoviedbseries.viewModel.SeriesViewModel;
 
 import java.util.List;
 
@@ -19,10 +25,12 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
 
     private Context ctx;
     private List<Serie> mValues;
+    SeriesViewModel seriesViewModel;
 
-    public MySerieRecyclerViewAdapter(Context ctx, List<Serie> mValues) {
+    public MySerieRecyclerViewAdapter(Context ctx, List<Serie> mValues, SeriesViewModel seriesViewModel) {
         this.ctx = ctx;
         this.mValues = mValues;
+        this.seriesViewModel = seriesViewModel;
     }
 
     @Override
@@ -46,10 +54,24 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
                         .load(holder.mItem.getPosterPath())
                         .into(holder.ivCartel);
             }
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    if (null != seriesViewModel) {
+                        seriesViewModel.setIdSerieSeleccionada(holder.mItem.getId());
+                        Toast.makeText(MyApp.getContext(), holder.mItem.getId().toString(), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ctx, DetalleSerieActivity.class);
+                        intent.putExtra(Constantes.EXTRA_ID_SERIE, holder.mItem.getId());
+                        ctx.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 
     public void setData(List<Serie> resultList){
+
         this.mValues = resultList;
         notifyDataSetChanged();
     }

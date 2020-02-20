@@ -14,6 +14,6 @@ public interface SeriesService {
     Call<ResponseSeriePopular> getPopularSeries();
 
     @GET("tv/{id}")
-    Call<ResponseSerie> getSerie(@Path("id") String id);
+    Call<ResponseSerie> getSerie(@Path("id") int id);
 
 }

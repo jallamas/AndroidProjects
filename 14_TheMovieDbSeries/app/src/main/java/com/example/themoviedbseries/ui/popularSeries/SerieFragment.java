@@ -13,31 +13,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.themoviedbseries.R;
 import com.example.themoviedbseries.response.Serie;
+import com.example.themoviedbseries.viewModel.SeriesViewModel;
 
 import java.util.List;
 
 public class SerieFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
-    List<Serie> serieList;
+//    List<Serie> serieList;
     MySerieRecyclerViewAdapter adapter;
     private int mColumnCount = 2;
     private RecyclerView recyclerView;
     private SeriesViewModel seriesViewModel;
-
+    Observer<List<Serie>> observer;
 
     public SerieFragment() {
+    }
+
+    public static SerieFragment newInstance(int columnCount) {
+        SerieFragment fragment = new SerieFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        seriesViewModel = new ViewModelProvider(getActivity())
-                .get(SeriesViewModel.class);
+        seriesViewModel = new ViewModelProvider(getActivity()).get(SeriesViewModel.class);
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
@@ -58,27 +67,47 @@ public class SerieFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new MySerieRecyclerViewAdapter(
-                    getActivity(),
-                    serieList
-            );
-            recyclerView.setAdapter(adapter);
 
-            loadSeriesData();
+            observer = new Observer<List<Serie>>() {
+                @Override
+                public void onChanged(List<Serie> series) {
+                    adapter = new MySerieRecyclerViewAdapter(
+                            getActivity(),
+                            series,
+                            seriesViewModel //TODO IMPORTANTE: debemos pasarle al Adapter el ViewModel
+                    );
+                    recyclerView.setAdapter(adapter);
+                }
+            };
+
+            seriesViewModel.getSeriesPopulares().observe(getActivity(), observer);
+
         }
         return view;
     }
 
-    private void loadSeriesData() {
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
+
+        //TODO IMPORTANTE
+        seriesViewModel.getSeriesPopulares().removeObserver(observer);
+
         seriesViewModel.getSeriesPopulares().observe(getActivity(), new Observer<List<Serie>>() {
-                    @Override
-                    public void onChanged(List<Serie> results) {
-                        serieList = results;
-                        adapter.setData(serieList);
-                    }
-                }
-        );
+            @Override
+            public void onChanged(List<Serie> series) {
+                adapter.setData(series);
+                recyclerView.setAdapter(adapter);
+            }
+        });
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
+    }
 }
