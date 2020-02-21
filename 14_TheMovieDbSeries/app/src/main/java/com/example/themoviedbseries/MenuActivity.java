@@ -38,9 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         seriesViewModel.getIdSerieSeleccionada().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer idSerie) {
-
                 if(idSerie != null) {
-                    Log.d("Entrada a observer","True");
                     Intent i = new Intent(MyApp.getContext(), DetalleSerieActivity.class);
                     i.putExtra(Constantes.EXTRA_ID_SERIE, idSerie);
                     startActivity(i);

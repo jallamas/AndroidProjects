@@ -61,9 +61,6 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
                     if (null != seriesViewModel) {
                         seriesViewModel.setIdSerieSeleccionada(holder.mItem.getId());
                         Toast.makeText(MyApp.getContext(), holder.mItem.getId().toString(), Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(ctx, DetalleSerieActivity.class);
-//                        intent.putExtra(Constantes.EXTRA_ID_SERIE, holder.mItem.getId());
-//                        ctx.startActivity(intent);
                     }
                 }
             });

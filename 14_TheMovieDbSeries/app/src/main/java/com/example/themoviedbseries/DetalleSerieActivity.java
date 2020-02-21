@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ public class DetalleSerieActivity extends AppCompatActivity {
 
     int idSerie;
     DetalleSerieViewModel detalleSerieViewModel;
+    SerieDetails serie;
     private TextView tvName, tvOverview;
     private ImageView ivPoster;
 
@@ -32,9 +34,8 @@ public class DetalleSerieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_serie);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,26 +46,30 @@ public class DetalleSerieActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        findViews();
+
         Bundle extras = getIntent().getExtras();
         idSerie = extras.getInt(Constantes.EXTRA_ID_SERIE);
 
         Toast.makeText(this, "Id: " + idSerie, Toast.LENGTH_SHORT).show();
 
         detalleSerieViewModel = new ViewModelProvider(this).get(DetalleSerieViewModel.class);
-
         detalleSerieViewModel.getSerie(idSerie).observe(this, new Observer<SerieDetails>() {
             @Override
             public void onChanged(SerieDetails serieDetails) {
-                ivPoster = findViewById(R.id.imageViewPoster);
-                tvName = findViewById(R.id.textViewSerieName);
-                tvOverview = findViewById(R.id.textViewOverview);
-
-                tvName.setText(serieDetails.getOriginalName());
-                tvOverview.setText(serieDetails.getOverview());
+                serie = serieDetails;
+                tvName.setText(serie.getOriginalName());
+                tvOverview.setText(serie.getOverview());
                 Glide.with(MyApp.getContext())
-                        .load(serieDetails.getPosterPath())
+                        .load(serie.getPosterPath())
                         .into(ivPoster);
             }
         });
+    }
+
+    private void findViews() {
+        ivPoster = findViewById(R.id.imageViewPoster);
+        tvName = findViewById(R.id.textViewSerieName);
+        tvOverview = findViewById(R.id.textViewOverview);
     }
 }

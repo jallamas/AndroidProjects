@@ -26,36 +26,8 @@ public class SeriesRepository {
     public SeriesRepository(){
         seriesClient = seriesClient.getInstance();
         seriesService = seriesClient.getSeriesService();
-        popularSeries = getPopularSeries();
-    }
-//    public SeriesRepository(int id){
-//        seriesClient = seriesClient.getInstance();
-//        seriesService = seriesClient.getSeriesService();
-//        serie = getSerie(id);
-//    }
-
-    public MutableLiveData<SerieDetails> getSerie(int id) {
-        final MutableLiveData<SerieDetails> data = new MutableLiveData<>();
-
-        Call<SerieDetails> call = seriesService.getSerie(id);
-        call.enqueue(new Callback<SerieDetails>() {
-            @Override
-            public void onResponse(Call<SerieDetails> call, Response<SerieDetails> response) {
-                if(response.isSuccessful()){
-                    data.setValue(response.body());
-
-                }else{
-                    Toast.makeText(MyApp.getContext(), "Se produjo un error", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SerieDetails> call, Throwable t) {
-                Toast.makeText(MyApp.getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        return data;
+        popularSeries = null;
+        serie = null;
     }
 
     public MutableLiveData<List<Serie>> getPopularSeries(){
@@ -75,6 +47,30 @@ public class SeriesRepository {
 
             @Override
             public void onFailure(Call<SeriesPopulares> call, Throwable t) {
+                Toast.makeText(MyApp.getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<SerieDetails> getSerie(int id) {
+        final MutableLiveData<SerieDetails> data = new MutableLiveData<>();
+
+        Call<SerieDetails> call = seriesService.getSerie(id);
+        call.enqueue(new Callback<SerieDetails>() {
+            @Override
+            public void onResponse(Call<SerieDetails> call, Response<SerieDetails> response) {
+                if(response.isSuccessful()){
+                    data.setValue(response.body());
+
+                }else{
+                    Toast.makeText(MyApp.getContext(), "Se produjo un error", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SerieDetails> call, Throwable t) {
                 Toast.makeText(MyApp.getContext(), "Error en la conexión", Toast.LENGTH_SHORT).show();
 
             }
