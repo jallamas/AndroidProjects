@@ -34,6 +34,7 @@
                 android:id="@+id/imageViewPoster"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
                 app:srcCompat="@mipmap/ic_launcher" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

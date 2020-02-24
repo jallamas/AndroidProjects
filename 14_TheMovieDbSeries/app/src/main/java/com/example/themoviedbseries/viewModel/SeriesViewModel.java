@@ -13,6 +13,8 @@ import com.example.themoviedbseries.response.Serie;
 
 import java.util.List;
 
+import static com.squareup.okhttp.internal.Internal.instance;
+
 public class SeriesViewModel extends AndroidViewModel {
     SeriesRepository seriesRepository;
     MutableLiveData<List<Serie>> listaSeries;
@@ -34,12 +36,11 @@ public class SeriesViewModel extends AndroidViewModel {
     }
 
     public void setIdSerieSeleccionada(Integer idSerieSeleccionada) {
-        Log.d("seteando id",idSerieSeleccionada.toString());
         this.idSerieSeleccionada.setValue(idSerieSeleccionada);
     }
 
     public MutableLiveData<Integer> getIdSerieSeleccionada() {
-        Log.d("geteando id",idSerieSeleccionada.toString());
         return idSerieSeleccionada;
     }
+
 }

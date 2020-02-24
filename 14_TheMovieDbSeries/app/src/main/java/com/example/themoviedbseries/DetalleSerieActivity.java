@@ -15,10 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +28,7 @@ public class DetalleSerieActivity extends AppCompatActivity {
     SerieDetails serie;
     private TextView tvName, tvOverview;
     private ImageView ivPoster;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,9 @@ public class DetalleSerieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_serie);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        setTitle(null);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,17 +54,17 @@ public class DetalleSerieActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         idSerie = extras.getInt(Constantes.EXTRA_ID_SERIE);
 
-        Toast.makeText(this, "Id: " + idSerie, Toast.LENGTH_SHORT).show();
-
         detalleSerieViewModel = new ViewModelProvider(this).get(DetalleSerieViewModel.class);
+
         detalleSerieViewModel.getSerie(idSerie).observe(this, new Observer<SerieDetails>() {
             @Override
             public void onChanged(SerieDetails serieDetails) {
-                serie = serieDetails;
-                tvName.setText(serie.getOriginalName());
-                tvOverview.setText(serie.getOverview());
+
+                tvName.setText(serieDetails.getOriginalName());
+                tvOverview.setText(serieDetails.getOverview());
+                ratingBar.setRating(serieDetails.getVoteAverage());
                 Glide.with(MyApp.getContext())
-                        .load(serie.getPosterPath())
+                        .load(serieDetails.getBackdropPath())
                         .into(ivPoster);
             }
         });

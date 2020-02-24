@@ -60,7 +60,6 @@ public class MySerieRecyclerViewAdapter extends RecyclerView.Adapter<MySerieRecy
                 public void onClick(View v) {
                     if (null != seriesViewModel) {
                         seriesViewModel.setIdSerieSeleccionada(holder.mItem.getId());
-                        Toast.makeText(MyApp.getContext(), holder.mItem.getId().toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

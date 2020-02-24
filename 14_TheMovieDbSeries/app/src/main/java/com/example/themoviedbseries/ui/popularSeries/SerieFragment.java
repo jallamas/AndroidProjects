@@ -89,7 +89,6 @@ public class SerieFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getActivity(), "onResume()", Toast.LENGTH_SHORT).show();
 
         //TODO IMPORTANTE
         seriesViewModel.getSeriesPopulares().removeObserver(observer);
@@ -107,6 +106,5 @@ public class SerieFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        Toast.makeText(getActivity(), "onPause()", Toast.LENGTH_SHORT).show();
     }
 }

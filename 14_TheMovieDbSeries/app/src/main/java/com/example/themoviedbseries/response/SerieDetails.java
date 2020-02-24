@@ -11,7 +11,7 @@ public class SerieDetails {
 
     @SerializedName("backdrop_path")
     @Expose
-    private Object backdropPath;
+    private String backdropPath;
     @SerializedName("created_by")
     @Expose
     private List<CreatedBy> createdBy = null;
@@ -89,7 +89,7 @@ public class SerieDetails {
     private String type;
     @SerializedName("vote_average")
     @Expose
-    private Integer voteAverage;
+    private Float voteAverage;
     @SerializedName("vote_count")
     @Expose
     private Integer voteCount;
@@ -132,7 +132,7 @@ public class SerieDetails {
      * @param homepage
      * @param status
      */
-    public SerieDetails(Object backdropPath, List<CreatedBy> createdBy, List<Integer> episodeRunTime, String firstAirDate, List<Genre> genres, String homepage, Integer id, Boolean inProduction, List<String> languages, String lastAirDate, LastEpisodeToAir lastEpisodeToAir, String name, Object nextEpisodeToAir, List<Network> networks, Integer numberOfEpisodes, Integer numberOfSeasons, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, Object posterPath, List<Object> productionCompanies, List<Season> seasons, String status, String type, Integer voteAverage, Integer voteCount) {
+    public SerieDetails(String backdropPath, List<CreatedBy> createdBy, List<Integer> episodeRunTime, String firstAirDate, List<Genre> genres, String homepage, Integer id, Boolean inProduction, List<String> languages, String lastAirDate, LastEpisodeToAir lastEpisodeToAir, String name, Object nextEpisodeToAir, List<Network> networks, Integer numberOfEpisodes, Integer numberOfSeasons, List<String> originCountry, String originalLanguage, String originalName, String overview, Double popularity, Object posterPath, List<Object> productionCompanies, List<Season> seasons, String status, String type, Float voteAverage, Integer voteCount) {
         super();
         this.backdropPath = backdropPath;
         this.createdBy = createdBy;
@@ -168,7 +168,7 @@ public class SerieDetails {
         return Constantes.URL_IMAGES + backdropPath;
     }
 
-    public void setBackdropPath(Object backdropPath) {
+    public void setBackdropPath(String backdropPath) {
         this.backdropPath = backdropPath;
     }
 
@@ -372,11 +372,11 @@ public class SerieDetails {
         this.type = type;
     }
 
-    public Integer getVoteAverage() {
+    public Float getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Integer voteAverage) {
+    public void setVoteAverage(Float voteAverage) {
         this.voteAverage = voteAverage;
     }
 

@@ -13,7 +13,7 @@ public interface SeriesService {
     @GET("tv/popular?api_key=" + Constantes.API_KEY + "&language=en-US&page=1")
     Call<SeriesPopulares> getPopularSeries();
 
-    @GET("tv/{id}")
+    @GET("tv/{id}?api_key=" + Constantes.API_KEY + "&language=en-US&page=1")
     Call<SerieDetails> getSerie(@Path("id") int id);
 
 }

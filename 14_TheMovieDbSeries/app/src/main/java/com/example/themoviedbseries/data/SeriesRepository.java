@@ -61,6 +61,7 @@ public class SeriesRepository {
         call.enqueue(new Callback<SerieDetails>() {
             @Override
             public void onResponse(Call<SerieDetails> call, Response<SerieDetails> response) {
+
                 if(response.isSuccessful()){
                     data.setValue(response.body());
 
